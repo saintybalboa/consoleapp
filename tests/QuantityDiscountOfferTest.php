@@ -10,9 +10,7 @@ class QuantityDiscountOfferTest extends \PHPUnit_Framework_TestCase{
 
 		$quantityDiscountOffer = new QuantityDiscountOffer(3, 20);
 
-		$item = new Item("A", 50, $quantityDiscountOffer);
-
-		$totalPrice = $item->getTotalPrice(3);
+		$totalPrice = $quantityDiscountOffer->calculate(3, 50);
 
 		$this->assertEquals($totalPrice, 130);
 	}
@@ -21,9 +19,7 @@ class QuantityDiscountOfferTest extends \PHPUnit_Framework_TestCase{
 
 		$quantityDiscountOffer = new QuantityDiscountOffer(2, 15);
 
-		$item = new Item("B", 30, $quantityDiscountOffer);
-
-		$totalPrice = $item->getTotalPrice(2);
+		$totalPrice = $quantityDiscountOffer->calculate(2, 30);
 
 		$this->assertEquals($totalPrice, 45);
 	}

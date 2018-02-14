@@ -23,7 +23,7 @@ class QuantityDiscountOffer implements IOffer{
 		}
 		else{
 			for($i=0; $i<$numberOfItems; $i++){
-				$totalPrice += $itemPrice;
+				$totalPrice = $totalPrice + $itemPrice;
 
 				if($i % $this->quantity == 0){
 					$totalPrice = $totalPrice - $this->discount;
