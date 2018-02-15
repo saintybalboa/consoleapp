@@ -6,12 +6,12 @@ require_once  './vendor/autoload.php';
 
 class ItemTest extends \PHPUnit_Framework_TestCase{
 
-	public function testItemPropertyValuesMatchInjectedPropertyValues(){
+	public function testItemDependencyInjection(){
 
 		$identifier = "A";
 		$price = 50;
 		$item = new Item($identifier, $price);
-	
+
 		$this->assertEquals($identifier, $item->getIdentifier());
 		$this->assertEquals($price, $item->getPrice());
 	}
@@ -26,7 +26,7 @@ class ItemTest extends \PHPUnit_Framework_TestCase{
 		$this->assertEquals($item->getTotalPrice(4), 200);
 	}
 
-	public function testItemDiscountedTotalPrice(){
+	public function testItemTotalPriceWithQuantityDiscountOfferApplied(){
 
 		$quantityDiscountOffer = new QuantityDiscountOffer(2, 15);
 

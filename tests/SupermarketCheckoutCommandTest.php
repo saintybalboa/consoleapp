@@ -1,8 +1,8 @@
 <?php
 
-use SupermarketCheckout\SupermarketCheckoutCommand;
 use Symfony\Component\Console\Application;
 use Symfony\Component\Console\Tester\CommandTester;
+use SupermarketCheckout\SupermarketCheckoutCommand;
 
 require_once  './vendor/autoload.php'; 
 
@@ -17,16 +17,11 @@ class SupermarketCheckoutCommandTest extends \PHPUnit_Framework_TestCase{
 
 		$commandTester = new CommandTester($command);
 
-		$items = 'ABBCA';
-
 		$commandTester->execute(array(
 			'command' => $command->getName(),
-			'Items' => $items
+			'Items' => 'ABBCA'
 		));
 
-		$expectedOutput = sprintf('Thanks for your purchasing: %s', $items);
-		$actualOutput = $commandTester->getDisplay();
-
-	//	$this->assertEquals($expectedOutput, $actualOutput);
+		$this->assertRegexp('/Total cost/', $commandTester->getDisplay());
 	}
 }

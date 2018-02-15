@@ -23,4 +23,16 @@ class QuantityDiscountOfferTest extends \PHPUnit_Framework_TestCase{
 
 		$this->assertEquals($totalPrice, 45);
 	}
+
+	public function testDiscountNFromPriceOfN(){
+
+		$discount = 13.50;
+		$quantity = 3;
+
+		$quantityDiscountOffer = new QuantityDiscountOffer($quantity, $discount);
+
+		$totalPrice = $quantityDiscountOffer->calculate(15, 23.65);
+
+		$this->assertEquals($totalPrice, 287.25);
+	}
 }
